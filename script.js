@@ -12,6 +12,7 @@ const btnHoldEl = document.querySelector('.btn--hold');
 const btnNewEl = document.querySelector('.btn--new');
 
 let totalScores, currentScores, activePlayer, playing;
+const WIN_VALUE = 100;
 
 function init() {
     totalScores = [0, 0];
@@ -57,7 +58,7 @@ btnHoldEl.addEventListener('click', () => {
     if (playing) {
         totalScores[activePlayer] += currentScores[activePlayer];
         document.querySelector(`#score--${activePlayer}`).textContent = totalScores[activePlayer];
-        if (totalScores[activePlayer] >= 20) {
+        if (totalScores[activePlayer] >= WIN_VALUE) {
             document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
             document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
             playing = false;
